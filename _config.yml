@@ -1,0 +1,35 @@
+title: Nelcifran Magalhães
+description: Portfolio website showcasing my projects and skills
+baseurl: ""
+url: "https://NelcifranMagalhaes.github.io"
+
+# site settings
+taglong: Portfolio website showcasing my projects and skills
+tagshort: Portfolio
+
+# author settings
+author:
+  name: Nelcifran Magalhães
+  email: # Add your email here (optional)
+
+# profile links
+profile:
+  github: https://github.com/NelcifranMagalhaes
+  linkedin: # Add your LinkedIn if you have one
+  cv: true
+
+# build settings
+permalink: pretty
+exclude:
+  - LICENSE
+  - README.md
+  - Gemfile
+  - vendor/
+  - .github/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate-v2
+  - jekyll-gist
+  - jekyll-sitemap
