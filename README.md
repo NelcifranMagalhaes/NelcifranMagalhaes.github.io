@@ -1,6 +1,6 @@
 # NelcifranMagalhaes.github.io
 
-My portfolio website built with Jekyll using the [cvless](https://github.com/piazzai/cvless) theme.
+My portfolio website built with Jekyll using the [cvless](https://github.com/piazzai/cvless) theme via remote_theme.
 
 ## Local Development
 
@@ -19,7 +19,7 @@ To run this site locally:
 
 ## Deployment
 
-This site is automatically deployed to GitHub Pages when changes are pushed to the main branch.
+This site is automatically deployed to GitHub Pages when changes are pushed to the main branch. The cvless theme is loaded via `remote_theme` which is compatible with GitHub Pages.
 
 ## Adding Content
 
@@ -29,10 +29,10 @@ This site is automatically deployed to GitHub Pages when changes are pushed to t
 
 ## Structure
 
-- `_config.yml` - Site configuration including author info and profile links
+- `_config.yml` - Site configuration including author info and profile links (uses remote_theme)
 - `index.md` - Homepage with introduction and blog archive
 - `cv.md` - CV page
 - `posts.md` - Blog posts listing page
 - `404.md` - Error page
 - `_posts/` - Blog posts directory
-- `Gemfile` - Ruby dependencies (cvless theme)
+- `Gemfile` - Ruby dependencies (github-pages gem for compatibility)

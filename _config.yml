@@ -3,7 +3,7 @@ description: Portfolio website showcasing my projects and skills
 baseurl: ""
 url: "https://NelcifranMagalhaes.github.io"
 
-theme: cvless
+remote_theme: piazzai/cvless
 
 # site settings
 taglong: Portfolio website showcasing my projects and skills
@@ -32,3 +32,4 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-paginate-v2
+  - jekyll-remote-theme
