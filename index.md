@@ -5,12 +5,19 @@ title: Home
 
 # About
 
-Hello! I'm Nelcifran Magalhães, and this is my portfolio website.
+Fala galera, 
+Sou Desenvolvedor a quase 10 anos, principalmente web usando <b>Rails 😍</b>, mas já trabalhei usando outras tecnologias como Python, Kotlin, Node, ReactJs, Vuejs e etc.
 
-I'm passionate about creating amazing projects and sharing my work with the world. [Click here](cv) to see my full CV, and [here](posts) to view my blog posts.
+Gosto mais do <b>backend</b>, mas sei me virar no frontend também.
 
-This website showcases my skills, projects, and technical insights. Feel free to explore and reach out if you'd like to collaborate!
+Já usei algumas tecnologias bem legais como <b>ElasticSearch</b> e Advanced Search para buscas e recomendações e <b>Redis</b> e <b>RabbitMQ</b> para processamento assíncrono e mensageria entre serviços.
 
-Below are my latest blog posts.
+Atualmente estou trabalhando com <b>Kotlin</b> no backend e <b>VueJs</b> no frontend.
+
+Gosto bastante de criar projetos para solucionar meu dia a dia e alguns deles estão no meu github.
+
+Este site foi criado para eu compartilhar alguns projetos que estou fazendo e até mesmo alguns pensamentos.
+
+Abaixo meus posts.
 
 {% include archive.html %}

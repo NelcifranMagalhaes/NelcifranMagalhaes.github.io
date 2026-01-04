@@ -1,22 +1,24 @@
 title: Nelcifran Magalhães
-description: Portfolio website showcasing my projects and skills
+description: Software Developer
 baseurl: ""
 url: "https://NelcifranMagalhaes.github.io"
 
 # site settings
-taglong: Portfolio website showcasing my projects and skills
-tagshort: Portfolio
+taglong: Software Developer
+tagshort: Blog
 
 # author settings
 author:
   name: Nelcifran Magalhães
-  email: # Add your email here (optional)
+  email: nelcifranpires@gmail.com
+photo: assets/files/me.jpg
 
 # profile links
 profile:
   github: https://github.com/NelcifranMagalhaes
-  linkedin: # Add your LinkedIn if you have one
+  linkedin: https://www.linkedin.com/in/nelcifranpires/
   cv: true
+  
 
 # build settings
 permalink: pretty

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Welcome to My Portfolio!"
-lead: My first blog post on this new portfolio website
-date: 2024-01-01 12:00:00 +0000
+title: "Manage my money"
+lead: My first blog post
+date: 2025-01-01 12:00:00 +0000
 categories: blog update
 ---
 
