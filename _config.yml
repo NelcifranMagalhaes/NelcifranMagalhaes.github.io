@@ -1,6 +1,6 @@
 # Site settings
 title: Nelcifran Magalhães
-email: your-email@example.com
+email: # Add your email here (optional)
 description: >-
   My portfolio website showcasing my projects and skills.
 baseurl: ""
