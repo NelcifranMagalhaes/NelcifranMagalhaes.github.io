@@ -1,6 +1,6 @@
 # NelcifranMagalhaes.github.io
 
-My portfolio website built with Jekyll.
+My portfolio website built with Jekyll using the [cvless](https://github.com/piazzai/cvless) theme.
 
 ## Local Development
 
@@ -24,12 +24,15 @@ This site is automatically deployed to GitHub Pages when changes are pushed to t
 ## Adding Content
 
 - **Blog posts**: Add new markdown files to the `_posts` directory with the format `YYYY-MM-DD-title.md`
-- **Pages**: Create new markdown files in the root directory with appropriate front matter
+- **CV**: Edit `cv.md` to update your curriculum vitae
+- **Profile links**: Update `_config.yml` to add social media links
 
 ## Structure
 
-- `_config.yml` - Site configuration
-- `index.md` - Homepage
-- `about.md` - About page
+- `_config.yml` - Site configuration including author info and profile links
+- `index.md` - Homepage with introduction and blog archive
+- `cv.md` - CV page
+- `posts.md` - Blog posts listing page
+- `404.md` - Error page
 - `_posts/` - Blog posts directory
-- `Gemfile` - Ruby dependencies
+- `Gemfile` - Ruby dependencies (cvless theme)

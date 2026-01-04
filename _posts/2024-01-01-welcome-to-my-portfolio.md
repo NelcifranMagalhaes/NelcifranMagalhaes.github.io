@@ -1,11 +1,10 @@
 ---
 layout: post
 title: "Welcome to My Portfolio!"
+lead: My first blog post on this new portfolio website
 date: 2024-01-01 12:00:00 +0000
 categories: blog update
 ---
-
-# Welcome!
 
 This is my first blog post on my new portfolio website. I'm excited to share my journey and projects with you.
 

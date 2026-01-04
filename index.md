@@ -3,14 +3,14 @@ layout: home
 title: Home
 ---
 
-# Welcome to My Portfolio
+# About
 
 Hello! I'm Nelcifran Magalhães, and this is my portfolio website.
 
-## About Me
+I'm passionate about creating amazing projects and sharing my work with the world. [Click here](cv) to see my full CV, and [here](posts) to view my blog posts.
 
-I'm passionate about creating amazing projects and sharing my work with the world.
+This website showcases my skills, projects, and technical insights. Feel free to explore and reach out if you'd like to collaborate!
 
-## Latest Posts
+Below are my latest blog posts.
 
-Check out my latest blog posts below.
+{% include archive.html %}
