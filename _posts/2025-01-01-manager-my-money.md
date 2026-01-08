@@ -10,27 +10,24 @@ categories: blog update
 para tentar controlar minhas finanças, mas geralmente acabo falhando, seja pelo fato de não gostar de planilhas(sou ruim no Excel 😅), ou pelo fato dos aplicativos geralmente possuirem o modelo FREEMIUM* de négocio.</p>
 <p>Esse ano decidi que vou fazer um controle melhor, e como estou de recesso do trabalho devido as festividades de 🎉 fim de ano 🎉, vou ter um tempinho pra fazer isso.</p>
 
+<div style="width: 50%; margin: 0 auto;">
 <img src="/assets/files/posts/my_money/naruto_sem_money.jpg" class="img-thumbnail">
-
+</div>
 ## Passos íniciais
 
 <p>Pensei em criar uma aplicação básica de ínicio para evitar um conflito desnecessário comigo mesmo em procrastinar no desenvolvimento.</p>
-<div style="width: 50%;">
+<div style="width: 50%; margin: 0 auto;">
   <img src="/assets/files/posts/my_money/shikamaru.jpg" class="img-thumbnail">
 </div>
-<p>A primeira coisa que pensei foi qual tecnologias iria usar para o desenvolvimento da aplicação web. Mais uma vez pensando na simplicidade pensei em 3 tecnologias que eu já sei alguma coisa: <b>Ruby</b>, <b>Python</b> ou <b>Kotlin</b>.</p>
-<div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-  <img src="/assets/files/posts/my_money/kotlin.png" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: contain;">
-  <img src="/assets/files/posts/my_money/python.png" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: contain;">
-  <img src="/assets/files/posts/my_money/ruby.png" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: contain;">
+<p>A primeira coisa que pensei foi qual tecnologias iria usar para o desenvolvimento da aplicação web. Mais uma vez pensando na simplicidade e praticidade pensei em <b>Ruby</b>, mais especificamente o <b>Ruby on Rails</b>.</p>
+
+<div style="width: 50%; margin: 0 auto;">
+  <img src="/assets/files/posts/my_money/rails.png" class="img-thumbnail">
 </div>
-<p>O primeiro critério que usei para tentar resolver o qual iria usar, foi que a linguagem tivesse um framework Fullstack, que me permitisse criar um monolito, sem precisar criar um backend e um frontend, pois não quero gastar com hospedagem mais que o básico e facilitar minha vida pra aproveitar o fim de ano.</p>
-<p>Daí já tirei o kotlin, por não dominar o suficiente o Spring e não ter tempo pra aprender.</p>
-<div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-  <img src="/assets/files/posts/my_money/python.png" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: contain;">
-  <img src="/assets/files/posts/my_money/ruby.png" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: contain;">
-</div>
-<p>Sobraram o <b>Ruby</b> e o <b>Python</b>, por fazer alguns projetinhos recentes em python usando o Django, eu estava bem confortável em usa-lo, mas faz um tempinho que não codava em <b>Ruby</b>, então decidi usar o <b>Rails</b> , que é o framework que mais domino.</p>
+
+<p>Muito por ser um framework Fullstack, que me permite criar um monolito, sem precisar criar um backend e um frontend, pois não quero gastar com hospedagem mais que o básico e facilitar minha vida pra aproveitar o fim de ano.</p>
+
+<p>Então acabei decidindo que iria usar o Rails, Bootstrap e Postgres como tecnologias principais.</p>
 
 <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
   <img src="/assets/files/posts/my_money/ruby.png" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: contain;">
@@ -74,7 +71,7 @@ Após rodar os comandos iniciais do rails de inicialização do projeto
 
 <img src="/assets/files/posts/my_money/despesas.png" class="img-thumbnail">
 
-<p>Também adicionei a gem de busca <a href="https://github.com/activerecord-hackery/ransack" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Ransack</a> para facilitar as buscas e criei um formulário de busca para Receitas e Despesas, com agluns filtros que achei legais no momento.</p>
+<p>Também adicionei a gem de busca <a href="https://github.com/activerecord-hackery/ransack" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Ransack</a> para facilitar as buscas e criei um formulário de busca para Receitas e Despesas, com alguns filtros que achei legais no momento.</p>
 
 ```erb
 <%= search_form_for @q do |f| %>
@@ -110,8 +107,52 @@ Após rodar os comandos iniciais do rails de inicialização do projeto
   <%= f.submit "Buscar", class: "btn btn-primary mt-2" %>
 <% end %>
 ```
+<p>Também fiz modificações no controller para usar essa busca.</p>
 
+```erb
+  def index
+    @q = MoneyIn.includes(:category).ransack(params[:q])
+    @pagy, @money_ins = pagy(@q.result.order(created_at: :desc))
+    @categories = Category.all
+  end 
+```
+
+<p>Agora com essa busca feita, vamos tentar colocar alguns gráficos para eu tirar algum insight quando for analisar meus gastos.</p>
 <img src="/assets/files/posts/my_money/search.png" class="img-thumbnail">
+<p>Com a gem <b>chartkick</b>, que cria gráficos bem legais sem nenhuma burocracia, basta fazer as queries e enviar para o front.</p>
+
+```erb
+  def money_out_by_category
+    MoneyOut
+      .joins(:category)
+      .where(money_date: @month_start..@month_end)
+      .group("categories.name")
+      .sum(:amount)
+  end
+```
+<p>Um exemplo é essa query que faz um somatório de todas as despesas agrupadas por categorias.</p>
+<p>Que acaba ficando assim no front:</p>
+
+```erb 
+<%= pie_chart @money_out_by_category %>
+
+ ```
+
+ <p>Bem simples né!!</p>
+
+<div style="width: 50%; margin: 0 auto;">
+  <img src="/assets/files/posts/my_money/naruto-thumbs-up.jpg" class="img-thumbnail">
+</div>
+
+<p>Pretendo fazer mais algumas melhorias, como I18n, melhorias no dashboard e outras coisas, tudo isso vai depender bastante do meu tempo esse ano.</p>
+<p>Também já hospedei , mas vou deixar pra explicar numa próxima vez.</p>
+<p>Se quiser acompanhar meu desenvolvimento, o repositório do projeto tá público e se chama <a href="https://github.com/NelcifranMagalhaes/my_money" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">my_money</a> (sou ruim com nomes).</p>
+<p>Vlw Flw !!!</p>
+
+<div style="width: 50%; margin: 0 auto;">
+  <img src="/assets/files/posts/my_money/kakashi.gif" class="img-thumbnail">
+</div>
+
 
 <p class= "fs-6"><b>Legenda:</b></p>
 <p class= "fs-6">FREEMIUM = é um modelo de negócio que oferece um produto ou serviço básico gratuitamente, atraindo muitos usuários, mas cobra por recursos avançados, funcionalidades extras.</p>
